@@ -17,7 +17,7 @@ document.querySelectorAll(".sort_btn").forEach((e) => {
     for (const li_item of Array.from(children)) {
       dom_parent.removeChild(li_item); // 削除
       var dom_data = {
-        key: li_item.getAttribute(sort_type),
+        key: parseInt(li_item.getAttribute(sort_type),10),
         value: li_item,
       };
 
