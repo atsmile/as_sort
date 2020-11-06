@@ -6,14 +6,18 @@
     <title>JSソートテスト</title>
   </head>
   <body>
-    <div class="sort_btn" data-type="point" data-order="asc">asc</div>
-    <div class="sort_btn" data-type="point" data-order="desc">desc</div>
-    <div class="sort_btn" data-type="test" data-order="asc">test asc</div>
-    <div class="sort_btn" data-type="test" data-order="desc">test desc</div>
-    <ul class="sort_main">
-      <li data-test="10" data-point="13">test1<span>bbbbb</span></li>
-      <li data-test="1" data-point="10">test2<span>aaaaa</span></li>
-      <li data-test="13" data-point="1">test3<span>ccccc</span></li>
+    <div class="js-sort-btn" data-type="index" data-order="asc">元に戻す(index昇順)</div>
+    <div class="js-sort-btn" data-type="sample" data-order="asc">sample 昇順</div>
+    <div class="js-sort-btn" data-type="sample" data-order="desc">sample 降順</div>
+    <ul class="js-sort-main">
+      <li data-index="1" data-sample="3">index1<span> sample3</span></li>
+      <li data-index="2" data-sample="0">index2<span> sample0</span></li>
+      <li data-index="3" data-sample="5">index3<span> sample5</span></li>
+      <li data-index="4" data-sample="8">index4<span> sample8</span></li>
+      <li data-index="5" data-sample="9">index5<span> sample9</span></li>
+      <li data-index="6" data-sample="6">index6<span> sample6</span></li>
+      <li data-index="7" data-sample="1">index7<span> sample1</span></li>
+      <li data-index="8" data-sample="2">index8<span> sample2</span></li>
     </ul>
     <script type="text/javascript" src="script/as_sort.js"></script>
   </body>
