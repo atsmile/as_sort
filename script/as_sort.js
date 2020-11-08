@@ -8,7 +8,7 @@ data-type : ソートしたい項目 => index
 data-order : ソートの順序 => asc (昇順) / desc (降順) | 未設定:昇順 | 以外の文字列:ソートしない
 data-target : 同一ページ内に複数設置したい時、ソートしたいリスト(ul)のクラス | 未設定:"js-sort-main"
 
-・リスト (ul li) MEMO 後々タグ自由化予定
+・リスト
 data-targetで設定したクラスか、sort_mainをulに設定したリスト
 data-typeで設定したデータ要素("index"の場合data-index)の値でソートする
 */
@@ -44,13 +44,7 @@ function as_sort() {
       func_sort(arr_sort_item, e.dataset.order);
 
       arr_sort_item.forEach(function (elem) {
-        var new_elem = document.createElement("li");
-        elem_data = elem.data; // data 属性をすべて格納
-        Object.keys(elem_data).forEach(function (type) {
-          new_elem.setAttribute([type], elem_data[type]);
-        });
-        new_elem.innerHTML = elem.value.innerHTML;
-        dom_parent.appendChild(new_elem);
+        dom_parent.appendChild(elem.value);
       });
     });
   });
