@@ -6,9 +6,16 @@
     <title>JSソートテスト</title>
   </head>
   <body>
-    <div class="js-sort-btn" data-type="index" data-order="asc">元に戻す(index昇順)</div>
-    <div class="js-sort-btn" data-type="sample" data-order="asc">sample 昇順</div>
-    <div class="js-sort-btn" data-type="sample" data-order="desc">sample 降順</div>
+    <h2>li</h2>
+    <div class="js-sort-btn" data-type="index" data-order="asc">
+      元に戻す(index昇順)
+    </div>
+    <div class="js-sort-btn" data-type="sample" data-order="asc">
+      sample 昇順
+    </div>
+    <div class="js-sort-btn" data-type="sample" data-order="desc">
+      sample 降順
+    </div>
     <ul class="js-sort-main">
       <li data-index="1" data-sample="3">index1<span> sample3</span></li>
       <li data-index="2" data-sample="0">index2<span> sample0</span></li>
@@ -19,6 +26,37 @@
       <li data-index="7" data-sample="1">index7<span> sample1</span></li>
       <li data-index="8" data-sample="2">index8<span> sample2</span></li>
     </ul>
+    <h2>P</h2>
+    <div
+      class="js-sort-btn"
+      data-type="index"
+      data-order="asc"
+      data-target="js-sort-sub"
+    >
+      元に戻す(index昇順)
+    </div>
+    <div
+      class="js-sort-btn"
+      data-type="sample"
+      data-order="asc"
+      data-target="js-sort-sub"
+    >
+      Pタグ 昇順
+    </div>
+    <div
+      class="js-sort-btn"
+      data-type="sample"
+      data-order="desc"
+      data-target="js-sort-sub"
+    >
+      Pタグ 降順
+    </div>
+    <div class="js-sort-sub">
+      <p data-index="1" data-sample="4">index1<span> sample4</span></p>
+      <p data-index="2" data-sample="2">index2<span> sample2</span></p>
+      <p data-index="3" data-sample="3">index3<span> sample3</span></p>
+      <p data-index="4" data-sample="1">index4<span> sample1</span></p>
+    </div>
     <script type="text/javascript" src="script/as_sort.js"></script>
   </body>
 </html>
