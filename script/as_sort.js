@@ -1,6 +1,6 @@
 /*
 ※ ソート
-ボタンとリスト(ul)に データ属性を設定することによりソート機能を適用
+ボタンとリストに データ属性を設定することによりソート機能を適用
 
 ・ボタンの設定 (クラスがあっていればタグは問わない)
 <li class="sort_btn" data-type="index" data-order="asc">元に戻す</li>
@@ -12,9 +12,9 @@ data-target : 同一ページ内に複数設置したい時、ソートしたい
 data-targetで設定したクラスか、sort_mainをulに設定したリスト
 data-typeで設定したデータ要素("index"の場合data-index)の値でソートする
 */
-function as_sort() {
-  const node_sort_btn = document.querySelectorAll(".js-sort-btn");
-  const sort_btn = nodelist2array(node_sort_btn);
+function as_sort(classname) {
+  const parent_class = classname == null ? ".js-sort-btn" : "." + classname;
+  const sort_btn = nodelist2array(document.querySelectorAll(parent_class));
   sort_btn.forEach(function (e) {
     e.addEventListener("click", function () {
       const target = e.getAttribute("data-target") || "js-sort-main";
@@ -44,6 +44,7 @@ function as_sort() {
   });
 }
 
+// ノードリストを配列に変換
 function nodelist2array(params) {
   return Array.prototype.slice.call(params, 0);
 }
