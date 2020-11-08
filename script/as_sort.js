@@ -14,32 +14,26 @@ data-typeで設定したデータ要素("index"の場合data-index)の値でソ�
 */
 function as_sort() {
   const node_sort_btn = document.querySelectorAll(".js-sort-btn");
-  const sort_btn = Array.prototype.slice.call(node_sort_btn, 0);
+  const sort_btn = nodelist2array(node_sort_btn);
   sort_btn.forEach(function (e) {
     e.addEventListener("click", function () {
       const target = e.getAttribute("data-target") || "js-sort-main";
       const tmp_parent = document.getElementsByClassName(target);
       const dom_parent = tmp_parent[0];
       const sort_type = "data-" + e.getAttribute("data-type");
-      const children = dom_parent.children;
+      const arr_children = nodelist2array(dom_parent.children);
 
       // 該当する data の番号をキーに連想配列にしてから配列に格納
       var arr_sort_item = new Array();
-      const arr_children = Array.prototype.slice.call(children, 0);
       arr_children.forEach(function (li_item) {
         dom_parent.removeChild(li_item); // DOMの削除
         var dom_data = {
           key: parseInt(li_item.getAttribute(sort_type), 10),
           value: li_item,
         };
-        var data = Array();
-        const li_attr = Array.prototype.slice.call(li_item.attributes, 0);
-        li_attr.forEach(function (data_name) {
-          data[data_name.name] = data_name.value;
-        });
-        dom_data["data"] = data;
         arr_sort_item.push(dom_data);
       });
+
       // ソート
       func_sort(arr_sort_item, e.dataset.order);
 
@@ -48,6 +42,10 @@ function as_sort() {
       });
     });
   });
+}
+
+function nodelist2array(params) {
+  return Array.prototype.slice.call(params, 0);
 }
 
 // ソート デフォルトで昇順
