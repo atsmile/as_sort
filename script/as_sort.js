@@ -13,8 +13,8 @@ data-targetで設定したクラスか、sort_mainをulに設定したリスト
 data-typeで設定したデータ要素("index"の場合data-index)の値でソートする
 */
 function as_sort(classname) {
-  const parent_class = classname == null ? ".js-sort-btn" : "." + classname;
-  const sort_btn = nodelist2array(document.querySelectorAll(parent_class));
+  const btn_class = classname == null ? ".js-sort-btn" : "." + classname;
+  const sort_btn = nodelist2array(document.querySelectorAll(btn_class));
   sort_btn.forEach(function (e) {
     e.addEventListener("click", function () {
       const target = e.getAttribute("data-target") || "js-sort-main";
