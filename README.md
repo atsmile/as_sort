@@ -14,5 +14,5 @@
 - `js-sort-main` か data-targetで設定したクラスを親要素に設定した子要素がソート対象  
 - data-typeで設定したデータ要素("index"の場合data-index)の値でソートする  
 
-### サンプルページ
+## サンプルページ
 https://atsmile.net/sample/sort_js/
