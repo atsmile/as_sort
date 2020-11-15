@@ -24,8 +24,8 @@ args_key   : ソート対象にしたいキー
 args_order : "asc": 昇順 "desc": 降順 引数なし: 昇順 それ以外: ソートしない
 */
 function sort_by_args(arr, args_key, args_order) {
-  const order = args_order || "asc";
-  const key = args_key || "key";
+  const order = args_order == null ? "asc" : args_order;
+  const key = args_key == null ? "key" : args_key;
   arr.sort(function (a, b) {
     if (order == "asc") {
       // 昇順
