@@ -34,53 +34,13 @@ function as_sort(classname) {
       });
 
       // ソート
-      sort_by_key(arr_sort_item, e.dataset.order);
+      sort_by_args(arr_sort_item, "key", e.dataset.order);
 
       arr_sort_item.forEach(function (elem) {
         dom_parent.appendChild(elem.value);
       });
     });
   });
-}
-
-// ノードリストを配列に変換
-function nodelist2array(params) {
-  return Array.prototype.slice.call(params, 0);
-}
-
-/*
-連想配列の 'key' でソート
-arr : ソートしたい配列
-args_order : "asc": 昇順 "desc": 降順 引数なし: 昇順 それ以外: ソートしない
-*/
-function sort_by_key(arr, args_order) {
-  const order = args_order || "asc";
-  arr.sort(function (a, b) {
-    if (order == "asc") {
-      // 昇順
-      return compare_func_asc(a.key, b.key);
-    } else {
-      if (order == "desc") {
-        // 降順
-        return compare_func_desc(a.key, b.key);
-      }
-      return 0;
-    }
-  });
-}
-
-// ソート用 昇順
-function compare_func_asc(a, b) {
-  if (a < b) return -1;
-  if (a > b) return 1;
-  return 0;
-}
-
-// ソート用 降順
-function compare_func_desc(a, b) {
-  if (a > b) return -1;
-  if (a < b) return 1;
-  return 0;
 }
 
 document.addEventListener("DOMContentLoaded", as_sort(), false);
