@@ -34,7 +34,7 @@ function as_sort(classname) {
       });
 
       // ソート
-      sort_by_args(arr_sort_item, "key", e.dataset.order);
+      sort_by_args(arr_sort_item, e.dataset.order);
 
       arr_sort_item.forEach(function (elem) {
         dom_parent.appendChild(elem.value);
