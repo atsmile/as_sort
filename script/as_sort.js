@@ -16,31 +16,36 @@ function as_sort(classname) {
   const btn_class = classname == null ? ".js-sort-btn" : "." + classname;
   const sort_btn = nodelist2array(document.querySelectorAll(btn_class));
   sort_btn.forEach(function (e) {
-    e.addEventListener("click", function () {
-      const target = e.getAttribute("data-target") || "js-sort-main";
-      const tmp_parent = document.getElementsByClassName(target);
-      const dom_parent = tmp_parent[0];
-      const sort_type = "data-" + e.getAttribute("data-type");
-      const arr_children = nodelist2array(dom_parent.children);
-
-      // 該当する data の番号をキーに連想配列にしてから配列に格納
-      var arr_sort_item = new Array();
-      arr_children.forEach(function (child) {
-        dom_parent.removeChild(child); // DOMの削除
-        arr_sort_item.push({
-          key: parseInt(child.getAttribute(sort_type), 10),
-          value: child,
-        });
-      });
-
-      // ソート
-      sort_by_args(arr_sort_item, e.dataset.order);
-
-      arr_sort_item.forEach(function (elem) {
-        dom_parent.appendChild(elem.value);
-      });
-    });
+    e.addEventListener("click",as_sort_inner);
   });
 }
 
+function as_sort_inner() {
+  const target = this.getAttribute("data-target") || "js-sort-main";
+  const tmp_parent = document.getElementsByClassName(target);
+  const dom_parent = tmp_parent[0];
+  const data_type = this.getAttribute("data-type") || "";
+  const sort_type = data_type == "" ? "" : "data-" +data_type;
+  if (sort_type == "") return
+  const arr_children = nodelist2array(dom_parent.children);
+
+  // 該当する data の番号をキーに連想配列にしてから配列に格納
+  var arr_sort_item = new Array();
+  arr_children.forEach(function (child) {
+    dom_parent.removeChild(child); // DOMの削除
+    arr_sort_item.push({
+      key: parseInt(child.getAttribute(sort_type), 10),
+      value: child,
+    });
+  });
+
+  // ソート
+  sort_by_args(arr_sort_item, this.dataset.order);
+
+  var str_add_dom = ''
+  arr_sort_item.forEach(function (elem) {
+    str_add_dom += elem.value.outerHTML
+  });
+  dom_parent.innerHTML = str_add_dom;
+}
 document.addEventListener("DOMContentLoaded", as_sort(), false);

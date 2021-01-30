@@ -23,7 +23,7 @@ arr        : ソートしたい連想配列
 args_order : "asc": 昇順 "desc": 降順 引数なし: 昇順 それ以外: ソートしない
 args_key   : ソート対象にしたいキー(未設定で key)
 */
-function sort_by_args(arr, args_order,args_key) {
+function sort_by_args(arr, args_order, args_key) {
   const order = args_order == null ? "asc" : args_order;
   const key = args_key == null ? "key" : args_key;
   arr.sort(function (a, b) {
